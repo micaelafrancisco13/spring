@@ -1,7 +1,7 @@
 package com.example.beans;
 
 /**
- *  Vehicle Class
+ * Vehicle Class
  */
 public class Vehicle {
 

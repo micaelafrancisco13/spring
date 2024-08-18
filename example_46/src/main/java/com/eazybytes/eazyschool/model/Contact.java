@@ -3,7 +3,7 @@ package com.eazybytes.eazyschool.model;
 import lombok.Data;
 
 @Data
-public class Contact{
+public class Contact {
 
     private int contactId;
     private String name;

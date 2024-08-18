@@ -31,7 +31,7 @@ public class ProfileController {
         profile.setName(person.getName());
         profile.setMobileNumber(person.getMobileNumber());
         profile.setEmail(person.getEmail());
-        if(person.getAddress() !=null && person.getAddress().getAddressId()>0){
+        if (person.getAddress() != null && person.getAddress().getAddressId() > 0) {
             profile.setAddress1(person.getAddress().getAddress1());
             profile.setAddress2(person.getAddress().getAddress2());
             profile.setCity(person.getAddress().getCity());
@@ -39,22 +39,21 @@ public class ProfileController {
             profile.setZipCode(person.getAddress().getZipCode());
         }
         ModelAndView modelAndView = new ModelAndView("profile.html");
-        modelAndView.addObject("profile",profile);
+        modelAndView.addObject("profile", profile);
         return modelAndView;
     }
 
     @PostMapping(value = "/updateProfile")
     public String updateProfile(@Valid @ModelAttribute("profile") Profile profile, Errors errors,
-            HttpSession session)
-    {
-        if(errors.hasErrors()){
+                                HttpSession session) {
+        if (errors.hasErrors()) {
             return "profile.html";
         }
         Person person = (Person) session.getAttribute("loggedInPerson");
         person.setName(profile.getName());
         person.setEmail(profile.getEmail());
         person.setMobileNumber(profile.getMobileNumber());
-        if(person.getAddress() ==null || !(person.getAddress().getAddressId()>0)){
+        if (person.getAddress() == null || !(person.getAddress().getAddressId() > 0)) {
             person.setAddress(new Address());
         }
         person.getAddress().setAddress1(profile.getAddress1());

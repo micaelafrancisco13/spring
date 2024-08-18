@@ -29,8 +29,8 @@ public class Vehicle {
                 "Destroying Vehicle Bean");
     }
 
-    public void printHello(){
+    public void printHello() {
         System.out.println(
-            "Printing Hello from Component Vehicle Bean");
+                "Printing Hello from Component Vehicle Bean");
     }
 }

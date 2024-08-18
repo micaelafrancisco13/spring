@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @FeignClient(name = "contact", url = "http://localhost:8080/api/contact",
-    configuration = ProjectConfiguration.class)
+        configuration = ProjectConfiguration.class)
 public interface ContactProxy {
 
     @RequestMapping(method = RequestMethod.GET, value = "/getMessagesByStatus")

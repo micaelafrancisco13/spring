@@ -16,15 +16,15 @@ import java.util.Set;
 public class EazyClass extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
-    @GenericGenerator(name = "native",strategy = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     private int classId;
 
-    @NotBlank(message="Name must not be blank")
-    @Size(min=3, message="Name must be at least 3 characters long")
+    @NotBlank(message = "Name must not be blank")
+    @Size(min = 3, message = "Name must be at least 3 characters long")
     private String name;
 
     @OneToMany(mappedBy = "eazyClass", fetch = FetchType.LAZY,
-            cascade = CascadeType.PERSIST,targetEntity = Person.class)
+            cascade = CascadeType.PERSIST, targetEntity = Person.class)
     private Set<Person> persons;
 }

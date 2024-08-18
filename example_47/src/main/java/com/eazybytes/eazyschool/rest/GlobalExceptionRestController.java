@@ -29,7 +29,7 @@ public class GlobalExceptionRestController extends ResponseEntityExceptionHandle
     }
 
     @ExceptionHandler({Exception.class})
-    public ResponseEntity<Response> exceptionHandler(Exception exception){
+    public ResponseEntity<Response> exceptionHandler(Exception exception) {
         Response response = new Response("500",
                 exception.getMessage());
         return new ResponseEntity(response, HttpStatus.INTERNAL_SERVER_ERROR);

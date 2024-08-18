@@ -48,9 +48,9 @@ public class ContactController {
         return new ModelAndView("redirect:/contact");
     }*/
 
-    @RequestMapping(value = "/saveMsg",method = POST)
+    @RequestMapping(value = "/saveMsg", method = POST)
     public String saveMessage(@Valid @ModelAttribute("contact") Contact contact, Errors errors) {
-        if(errors.hasErrors()){
+        if (errors.hasErrors()) {
             log.error("Contact form validation failed due to : " + errors.toString());
             return "contact.html";
         }
@@ -60,9 +60,9 @@ public class ContactController {
 
     @RequestMapping("/displayMessages/page/{pageNum}")
     public ModelAndView displayMessages(Model model,
-            @PathVariable(name = "pageNum") int pageNum,@RequestParam("sortField") String sortField,
+                                        @PathVariable(name = "pageNum") int pageNum, @RequestParam("sortField") String sortField,
                                         @RequestParam("sortDir") String sortDir) {
-        Page<Contact> msgPage = contactService.findMsgsWithOpenStatus(pageNum,sortField,sortDir);
+        Page<Contact> msgPage = contactService.findMsgsWithOpenStatus(pageNum, sortField, sortDir);
         List<Contact> contactMsgs = msgPage.getContent();
         ModelAndView modelAndView = new ModelAndView("messages.html");
         model.addAttribute("currentPage", pageNum);
@@ -71,16 +71,15 @@ public class ContactController {
         model.addAttribute("sortField", sortField);
         model.addAttribute("sortDir", sortDir);
         model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
-        modelAndView.addObject("contactMsgs",contactMsgs);
+        modelAndView.addObject("contactMsgs", contactMsgs);
         return modelAndView;
     }
 
-    @RequestMapping(value = "/closeMsg",method = GET)
+    @RequestMapping(value = "/closeMsg", method = GET)
     public String closeMsg(@RequestParam int id) {
         contactService.updateMsgStatus(id);
         return "redirect:/displayMessages/page/1?sortField=name&sortDir=desc";
     }
-
 
 
 }

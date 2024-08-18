@@ -16,7 +16,7 @@ configuration class.
 * */
 @Configuration
 @ComponentScan(basePackages = {"com.example.implementation",
-            "com.example.services", "com.example.aspects"})
+        "com.example.services", "com.example.aspects"})
 @EnableAspectJAutoProxy
 public class ProjectConfig {
 

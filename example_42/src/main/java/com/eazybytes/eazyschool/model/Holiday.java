@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 
 @Data
 @Entity
-@Table(name="holidays")
+@Table(name = "holidays")
 public class Holiday extends BaseEntity {
 
     @Id

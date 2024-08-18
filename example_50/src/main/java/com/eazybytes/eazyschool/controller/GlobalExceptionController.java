@@ -21,15 +21,15 @@ public class GlobalExceptionController {
     logic if a given exception type is thrown inside the web application.
     * */
     @ExceptionHandler({Exception.class})
-    public ModelAndView exceptionHandler(Exception exception){
+    public ModelAndView exceptionHandler(Exception exception) {
         String errorMsg = null;
         ModelAndView errorPage = new ModelAndView();
         errorPage.setViewName("error");
-        if(exception.getMessage()!=null){
+        if (exception.getMessage() != null) {
             errorMsg = exception.getMessage();
-        }else if (exception.getCause()!=null){
+        } else if (exception.getCause() != null) {
             errorMsg = exception.getCause().toString();
-        }else if (exception!=null){
+        } else if (exception != null) {
             errorMsg = exception.toString();
         }
         errorPage.addObject("errormsg", errorMsg);

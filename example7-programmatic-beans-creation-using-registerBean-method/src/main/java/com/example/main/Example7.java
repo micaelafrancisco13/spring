@@ -29,29 +29,29 @@ public class Example7 {
         int randomNumber = random.nextInt(10);
         System.out.println("randomNumber = " + randomNumber);
 
-        if((randomNumber% 2) == 0){
+        if ((randomNumber % 2) == 0) {
             context.registerBean("volkswagen",
-                    Vehicle.class,volkswagenSupplier);
-        }else{
+                    Vehicle.class, volkswagenSupplier);
+        } else {
             context.registerBean("audi",
-                    Vehicle.class,audiSupplier);
+                    Vehicle.class, audiSupplier);
         }
         Vehicle volksVehicle = null;
         Vehicle audiVehicle = null;
         try {
-            volksVehicle = context.getBean("volkswagen",Vehicle.class);
-        }catch (NoSuchBeanDefinitionException noSuchBeanDefinitionException){
+            volksVehicle = context.getBean("volkswagen", Vehicle.class);
+        } catch (NoSuchBeanDefinitionException noSuchBeanDefinitionException) {
             System.out.println("Error while creating Volkswagen vehicle");
         }
         try {
-            audiVehicle = context.getBean("audi",Vehicle.class);
-        }catch (NoSuchBeanDefinitionException noSuchBeanDefinitionException){
+            audiVehicle = context.getBean("audi", Vehicle.class);
+        } catch (NoSuchBeanDefinitionException noSuchBeanDefinitionException) {
             System.out.println("Error while creating Audi vehicle");
         }
 
-        if(null != volksVehicle){
+        if (null != volksVehicle) {
             System.out.println("Programming Vehicle name from Spring Context is: " + volksVehicle.getName());
-        }else{
+        } else {
             System.out.println("Programming Vehicle name from Spring Context is: " + audiVehicle.getName());
         }
 

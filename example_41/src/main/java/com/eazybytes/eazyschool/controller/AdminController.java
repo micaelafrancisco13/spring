@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpSession;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +31,7 @@ public class AdminController {
     public ModelAndView displayClasses(Model model) {
         List<EazyClass> eazyClasses = eazyClassRepository.findAll();
         ModelAndView modelAndView = new ModelAndView("classes.html");
-        modelAndView.addObject("eazyClasses",eazyClasses);
+        modelAndView.addObject("eazyClasses", eazyClasses);
         modelAndView.addObject("eazyClass", new EazyClass());
         return modelAndView;
     }
@@ -45,7 +46,7 @@ public class AdminController {
     @RequestMapping("/deleteClass")
     public ModelAndView deleteClass(Model model, @RequestParam int id) {
         Optional<EazyClass> eazyClass = eazyClassRepository.findById(id);
-        for(Person person : eazyClass.get().getPersons()){
+        for (Person person : eazyClass.get().getPersons()) {
             person.setEazyClass(null);
             personRepository.save(person);
         }
@@ -60,10 +61,10 @@ public class AdminController {
         String errorMessage = null;
         ModelAndView modelAndView = new ModelAndView("students.html");
         Optional<EazyClass> eazyClass = eazyClassRepository.findById(classId);
-        modelAndView.addObject("eazyClass",eazyClass.get());
-        modelAndView.addObject("person",new Person());
-        session.setAttribute("eazyClass",eazyClass.get());
-        if(error != null) {
+        modelAndView.addObject("eazyClass", eazyClass.get());
+        modelAndView.addObject("person", new Person());
+        session.setAttribute("eazyClass", eazyClass.get());
+        if (error != null) {
             errorMessage = "Invalid Email entered!!";
             modelAndView.addObject("errorMessage", errorMessage);
         }
@@ -75,16 +76,16 @@ public class AdminController {
         ModelAndView modelAndView = new ModelAndView();
         EazyClass eazyClass = (EazyClass) session.getAttribute("eazyClass");
         Person personEntity = personRepository.readByEmail(person.getEmail());
-        if(personEntity==null || !(personEntity.getPersonId()>0)){
-            modelAndView.setViewName("redirect:/admin/displayStudents?classId="+eazyClass.getClassId()
-                    +"&error=true");
+        if (personEntity == null || !(personEntity.getPersonId() > 0)) {
+            modelAndView.setViewName("redirect:/admin/displayStudents?classId=" + eazyClass.getClassId()
+                    + "&error=true");
             return modelAndView;
         }
         personEntity.setEazyClass(eazyClass);
         personRepository.save(personEntity);
         eazyClass.getPersons().add(personEntity);
         eazyClassRepository.save(eazyClass);
-        modelAndView.setViewName("redirect:/admin/displayStudents?classId="+eazyClass.getClassId());
+        modelAndView.setViewName("redirect:/admin/displayStudents?classId=" + eazyClass.getClassId());
         return modelAndView;
     }
 
@@ -95,8 +96,8 @@ public class AdminController {
         person.get().setEazyClass(null);
         eazyClass.getPersons().remove(person.get());
         EazyClass eazyClassSaved = eazyClassRepository.save(eazyClass);
-        session.setAttribute("eazyClass",eazyClassSaved);
-        ModelAndView modelAndView = new ModelAndView("redirect:/admin/displayStudents?classId="+eazyClass.getClassId());
+        session.setAttribute("eazyClass", eazyClassSaved);
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/displayStudents?classId=" + eazyClass.getClassId());
         return modelAndView;
     }
 }

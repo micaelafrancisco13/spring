@@ -20,14 +20,14 @@ public class HolidaysController {
     private HolidaysRepository holidaysRepository;
 
     @GetMapping("/holidays/{display}")
-    public String displayHolidays(@PathVariable String display,Model model) {
-        if(null != display && display.equals("all")){
-            model.addAttribute("festival",true);
-            model.addAttribute("federal",true);
-        }else if(null != display && display.equals("federal")){
-            model.addAttribute("federal",true);
-        }else if(null != display && display.equals("festival")){
-            model.addAttribute("festival",true);
+    public String displayHolidays(@PathVariable String display, Model model) {
+        if (null != display && display.equals("all")) {
+            model.addAttribute("festival", true);
+            model.addAttribute("federal", true);
+        } else if (null != display && display.equals("federal")) {
+            model.addAttribute("federal", true);
+        } else if (null != display && display.equals("festival")) {
+            model.addAttribute("festival", true);
         }
         List<Holiday> holidays = holidaysRepository.findAllHolidays();
         Holiday.Type[] types = Holiday.Type.values();

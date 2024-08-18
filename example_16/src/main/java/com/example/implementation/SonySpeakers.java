@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Primary
 public class SonySpeakers implements Speakers {
 
-    public String makeSound(){
+    public String makeSound() {
         return "Playing music with Sony speakers";
     }
 

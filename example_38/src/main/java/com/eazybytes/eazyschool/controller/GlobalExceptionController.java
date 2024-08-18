@@ -20,7 +20,7 @@ public class GlobalExceptionController {
     logic if a given exception type is thrown inside the web application.
     * */
     @ExceptionHandler(Exception.class)
-    public ModelAndView exceptionHandler(Exception exception){
+    public ModelAndView exceptionHandler(Exception exception) {
         ModelAndView errorPage = new ModelAndView();
         errorPage.setViewName("error");
         errorPage.addObject("errormsg", exception.getMessage());

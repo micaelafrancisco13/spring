@@ -4,15 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
-@Component(value="personBean")
+@Component(value = "personBean")
 @Lazy
 public class Person {
 
-    private String name="Lucy";
     private final Vehicle vehicle;
+    private String name = "Lucy";
 
     @Autowired
-    public Person(Vehicle vehicle){
+    public Person(Vehicle vehicle) {
         System.out.println("Person bean created by Spring");
         this.vehicle = vehicle;
     }

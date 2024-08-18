@@ -7,9 +7,6 @@ import com.example.model.Song;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.time.Duration;
-import java.time.Instant;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Component
@@ -22,7 +19,7 @@ public class VehicleServices {
     private Tyres tyres;
 
     @LogAspect
-    public String playMusic(boolean vehicleStarted, Song song){
+    public String playMusic(boolean vehicleStarted, Song song) {
         /*Instant start = Instant.now();
         logger.info("method execution start");*/
         /*String music = null;
@@ -39,7 +36,7 @@ public class VehicleServices {
         return speakers.makeSound(song);
     }
 
-    public String moveVehicle(boolean vehicleStarted){
+    public String moveVehicle(boolean vehicleStarted) {
         /*Instant start = Instant.now();
         logger.info("method execution start");*/
        /* String status = null;
@@ -56,7 +53,7 @@ public class VehicleServices {
         return tyres.rotate();
     }
 
-    public String applyBrake(boolean vehicleStarted){
+    public String applyBrake(boolean vehicleStarted) {
         /*Instant start = Instant.now();
         logger.info("method execution start");*/
         /*String status = null;

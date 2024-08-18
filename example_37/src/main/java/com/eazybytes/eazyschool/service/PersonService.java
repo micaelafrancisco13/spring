@@ -17,13 +17,12 @@ public class PersonService {
     @Autowired
     private RolesRepository rolesRepository;
 
-    public boolean createNewPerson(Person person){
+    public boolean createNewPerson(Person person) {
         boolean isSaved = false;
         Roles role = rolesRepository.getByRoleName(EazySchoolConstants.STUDENT_ROLE);
         person.setRoles(role);
         person = personRepository.save(person);
-        if (null != person && person.getPersonId() > 0)
-        {
+        if (null != person && person.getPersonId() > 0) {
             isSaved = true;
         }
         return isSaved;

@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class Person {
 
-    private String name="Lucy";
     private final Vehicle vehicle;
+    private String name = "Lucy";
 
     @Autowired
-    public Person(@Qualifier("vehicle2") Vehicle vehicle){
+    public Person(@Qualifier("vehicle2") Vehicle vehicle) {
         System.out.println("Person bean created by Spring");
         this.vehicle = vehicle;
     }

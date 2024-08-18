@@ -8,8 +8,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients(basePackages = "com.eazybytes.eazyschool.proxy")
 public class EazyschoolApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(EazyschoolApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(EazyschoolApplication.class, args);
+    }
 
 }

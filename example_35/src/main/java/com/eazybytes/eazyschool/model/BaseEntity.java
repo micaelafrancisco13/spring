@@ -3,6 +3,7 @@ package com.eazybytes.eazyschool.model;
 import lombok.Data;
 
 import jakarta.persistence.MappedSuperclass;
+
 import java.time.LocalDateTime;
 
 @Data

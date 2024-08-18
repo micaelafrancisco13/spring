@@ -8,7 +8,7 @@ public class BridgeStoneTyres implements Tyres {
 
 
     @Override
-    public String rotate(){
+    public String rotate() {
         return "Vehicle moving with the help of BridgeStone tyres";
     }
 

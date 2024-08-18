@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>Eazy School - Best Educational Institute for your Child</title>
     <!-- Google fonts -->
     <link href="//fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- Template CSS Style link -->
-    <link rel="stylesheet" href="/assets/css/style-starter.css">
+    <link href="/assets/css/style-starter.css" rel="stylesheet">
 </head>
 
 <body>
@@ -40,34 +40,35 @@
         <div class="row mb-4">
             <div class="overview-wrap">
                 <h3 class="heading-21921">EazySchool Course Details</h3>
-                <button class="btn btn-style btn-style-3 text-left" type="button"
-                        data-bs-toggle="modal" data-bs-target="#addCourse">ADD COURSE</button>
+                <button class="btn btn-style btn-style-3 text-left" data-bs-target="#addCourse"
+                        data-bs-toggle="modal" type="button">ADD COURSE
+                </button>
 
             </div>
         </div>
-        <div class="modal fade login-block" id="addCourse" tabindex="-1" role="dialog"
-             aria-labelledby="addCourseModalLabel" aria-hidden="true">
+        <div aria-hidden="true" aria-labelledby="addCourseModalLabel" class="modal fade login-block" id="addCourse"
+             role="dialog" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header border-bottom-0">
                         <h5 class="modal-title" id="addCourseLabel">Add New Course</h5>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <button aria-label="Close" class="close" data-bs-dismiss="modal" type="button">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form th:action="@{/admin/addNewCourse}" method="post" class="signin-form" th:object="${course}">
+                    <form class="signin-form" method="post" th:action="@{/admin/addNewCourse}" th:object="${course}">
                         <div class="modal-body">
                             <div class="input-grids">
                                 <label class="control-label" for="courseName">Course Name</label>
-                                <input type="text" class="form-control" name="courseName" id="courseName"
-                                       th:field="*{name}" required placeholder="Enter Course Name">
+                                <input class="form-control" id="courseName" name="courseName" placeholder="Enter Course Name"
+                                       required th:field="*{name}" type="text">
                                 <label class="control-label" for="fees">Fees</label>
-                                <input type="text" class="form-control" name="fees" id="fees" th:field="*{fees}"
-                                       required placeholder="Enter fees">
+                                <input class="form-control" id="fees" name="fees" placeholder="Enter fees" required
+                                       th:field="*{fees}" type="text">
                             </div>
                         </div>
                         <div class="modal-footer border-top-0 d-flex justify-content-center">
-                            <button type="submit" class="btn btn-style btn-style-3">Submit</button>
+                            <button class="btn btn-style btn-style-3" type="submit">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -87,7 +88,8 @@
                 <td th:text="${course.courseId}"></td>
                 <td th:text="${course.name}"></td>
                 <td th:text="${course.fees}"></td>
-                <td><a th:href="@{/admin/viewStudents(id=${course.courseId})}" class="btn btn-warning">VIEW STUDENTS</a></td>
+                <td><a class="btn btn-warning" th:href="@{/admin/viewStudents(id=${course.courseId})}">VIEW STUDENTS</a>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -105,29 +107,29 @@
 
 <!-- Js scripts -->
 <!-- move top -->
-<button onclick="topFunction()" id="movetop" title="Go to top">
-    <span class="fas fa-level-up-alt" aria-hidden="true"></span>
+<button id="movetop" onclick="topFunction()" title="Go to top">
+    <span aria-hidden="true" class="fas fa-level-up-alt"></span>
 </button>
 <script>
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function () {
-            scrollFunction()
-        };
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+        scrollFunction()
+    };
 
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("movetop").style.display = "block";
-            } else {
-                document.getElementById("movetop").style.display = "none";
-            }
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
         }
+    }
 
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        }
-    </script>
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
 <!-- //move top -->
 
 <!-- common jquery plugin -->
@@ -140,41 +142,41 @@
 
 <!-- MENU-JS -->
 <script>
-        $(window).on("scroll", function () {
-            var scroll = $(window).scrollTop();
+    $(window).on("scroll", function () {
+        var scroll = $(window).scrollTop();
 
-            if (scroll >= 80) {
-                $("#site-header").addClass("nav-fixed");
-            } else {
-                $("#site-header").removeClass("nav-fixed");
-            }
-        });
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
 
-        //Main navigation Active Class Add Remove
-        $(".navbar-toggler").on("click", function () {
-            $("header").toggleClass("active");
-        });
-        $(document).on("ready", function () {
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function () {
             if ($(window).width() > 991) {
                 $("header").removeClass("active");
             }
-            $(window).on("resize", function () {
-                if ($(window).width() > 991) {
-                    $("header").removeClass("active");
-                }
-            });
         });
-    </script>
+    });
+</script>
 <!-- //MENU-JS -->
 
 <!-- disable body scroll which navbar is in active -->
 <script>
-        $(function () {
-            $('.navbar-toggler').click(function () {
-                $('body').toggleClass('noscroll');
-            })
-        });
-    </script>
+    $(function () {
+        $('.navbar-toggler').click(function () {
+            $('body').toggleClass('noscroll');
+        })
+    });
+</script>
 <!-- //disable body scroll which navbar is in active -->
 
 <!-- bootstrap -->

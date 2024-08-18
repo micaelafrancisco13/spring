@@ -33,22 +33,22 @@ public class ContactController {
     }
 
     @PostMapping("/saveMsg")
-    public ResponseEntity<Response> saveMsg(@RequestBody Contact contact){
+    public ResponseEntity<Response> saveMsg(@RequestBody Contact contact) {
         String uri = "http://localhost:8080/api/contact/saveMsg";
         HttpHeaders headers = new HttpHeaders();
-        headers.add("invocationFrom","RestTemplate");
+        headers.add("invocationFrom", "RestTemplate");
         HttpEntity<Contact> httpEntity = new HttpEntity<>(contact, headers);
         ResponseEntity<Response> responseEntity = restTemplate.exchange(uri, HttpMethod.POST,
-                httpEntity,Response.class);
+                httpEntity, Response.class);
         return responseEntity;
     }
 
     @PostMapping("/saveMessage")
-    public Mono<Response> saveMessage(@RequestBody Contact contact){
+    public Mono<Response> saveMessage(@RequestBody Contact contact) {
         String uri = "http://localhost:8080/api/contact/saveMsg";
         return webClient.post().uri(uri)
-                .header("invocationFrom","WebClient")
-                .body(Mono.just(contact),Contact.class)
+                .header("invocationFrom", "WebClient")
+                .body(Mono.just(contact), Contact.class)
                 .retrieve()
                 .bodyToMono(Response.class);
     }

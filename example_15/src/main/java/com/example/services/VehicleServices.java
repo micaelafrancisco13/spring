@@ -15,12 +15,12 @@ public class VehicleServices {
     private Speakers speakers;
     private Tyres tyres;
 
-    public void playMusic(){
+    public void playMusic() {
         String music = speakers.makeSound();
         System.out.println(music);
     }
 
-    public void moveVehicle(){
+    public void moveVehicle() {
         String status = tyres.rotate();
         System.out.println(status);
     }

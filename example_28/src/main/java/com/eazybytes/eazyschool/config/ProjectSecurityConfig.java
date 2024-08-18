@@ -13,12 +13,12 @@ public class ProjectSecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.csrf((csrf) -> csrf.disable())
                 .authorizeHttpRequests((requests) -> requests.requestMatchers("/", "/home").permitAll()
-                .requestMatchers("/holidays/**").permitAll()
-                .requestMatchers("/contact").permitAll()
-                .requestMatchers("/saveMsg").permitAll()
-                .requestMatchers("/courses").permitAll()
-                .requestMatchers("/about").permitAll()
-                .requestMatchers("/assets/**").permitAll())
+                        .requestMatchers("/holidays/**").permitAll()
+                        .requestMatchers("/contact").permitAll()
+                        .requestMatchers("/saveMsg").permitAll()
+                        .requestMatchers("/courses").permitAll()
+                        .requestMatchers("/about").permitAll()
+                        .requestMatchers("/assets/**").permitAll())
                 .formLogin(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults());
         return http.build();

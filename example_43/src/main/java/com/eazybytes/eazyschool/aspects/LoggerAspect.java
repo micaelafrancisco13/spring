@@ -23,14 +23,14 @@ public class LoggerAspect {
         Object returnObj = joinPoint.proceed();
         Instant finish = Instant.now();
         long timeElapsed = Duration.between(start, finish).toMillis();
-        log.info("Time took to execute " + joinPoint.getSignature().toString() + " method is : "+timeElapsed);
+        log.info("Time took to execute " + joinPoint.getSignature().toString() + " method is : " + timeElapsed);
         log.info(joinPoint.getSignature().toString() + " method execution end");
         return returnObj;
     }
 
-    @AfterThrowing(value = "execution(* com.eazybytes.eazyschool.*.*(..))",throwing = "ex")
+    @AfterThrowing(value = "execution(* com.eazybytes.eazyschool.*.*(..))", throwing = "ex")
     public void logException(JoinPoint joinPoint, Exception ex) {
-        log.error(joinPoint.getSignature()+ " An exception happened due to : "+ex.getMessage());
+        log.error(joinPoint.getSignature() + " An exception happened due to : " + ex.getMessage());
     }
 
 

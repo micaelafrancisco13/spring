@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan("com.eazybytes.eazyschool.model")
 public class EazyschoolApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(EazyschoolApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(EazyschoolApplication.class, args);
+    }
 
 }

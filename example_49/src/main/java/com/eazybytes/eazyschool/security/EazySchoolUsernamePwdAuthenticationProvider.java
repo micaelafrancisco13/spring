@@ -21,8 +21,7 @@ import java.util.List;
 @Component
 @Profile("prod")
 public class EazySchoolUsernamePwdAuthenticationProvider
-        implements AuthenticationProvider
-{
+        implements AuthenticationProvider {
     @Autowired
     private PersonRepository personRepository;
 
@@ -35,18 +34,18 @@ public class EazySchoolUsernamePwdAuthenticationProvider
         String email = authentication.getName();
         String pwd = authentication.getCredentials().toString();
         Person person = personRepository.readByEmail(email);
-        if(null != person && person.getPersonId()>0 &&
-                passwordEncoder.matches(pwd,person.getPwd())){
+        if (null != person && person.getPersonId() > 0 &&
+                passwordEncoder.matches(pwd, person.getPwd())) {
             return new UsernamePasswordAuthenticationToken(
                     email, null, getGrantedAuthorities(person.getRoles()));
-        }else{
+        } else {
             throw new BadCredentialsException("Invalid credentials!");
         }
     }
 
     private List<GrantedAuthority> getGrantedAuthorities(Roles roles) {
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_"+roles.getRoleName()));
+        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + roles.getRoleName()));
         return grantedAuthorities;
     }
 

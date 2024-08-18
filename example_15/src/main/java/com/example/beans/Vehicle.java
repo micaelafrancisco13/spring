@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 @Component("vehicleBean")
 public class Vehicle {
 
-    private String name="Honda";
     private final VehicleServices vehicleServices;
+    private String name = "Honda";
 
     @Autowired
-    public Vehicle(VehicleServices vehicleServices){
+    public Vehicle(VehicleServices vehicleServices) {
         this.vehicleServices = vehicleServices;
     }
 
@@ -27,13 +27,13 @@ public class Vehicle {
         return vehicleServices;
     }
 
-    public void printHello(){
+    public void printHello() {
         System.out.println(
-            "Printing Hello from Component Vehicle Bean");
+                "Printing Hello from Component Vehicle Bean");
     }
 
     @Override
-    public String toString(){
-        return "Vehicle name is - "+name;
+    public String toString() {
+        return "Vehicle name is - " + name;
     }
 }

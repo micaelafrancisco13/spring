@@ -6,14 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Person {
 
-    private String name="Lucy";
-
-    @Autowired
-    public Person(Vehicle vehicle){
-        System.out.println("Person bean created by Spring");
-        this.vehicle = vehicle;
-    }
-
+    private String name = "Lucy";
     /*
     The @Autowired annotation marks on a field, constructor, Setter method
     is used to auto-wire the beans that is ‘injecting beans'(Objects) at runtime
@@ -21,6 +14,12 @@ public class Person {
     * */
     /*@Autowired*/
     private Vehicle vehicle;
+
+    @Autowired
+    public Person(Vehicle vehicle) {
+        System.out.println("Person bean created by Spring");
+        this.vehicle = vehicle;
+    }
 
     public String getName() {
         return name;
