@@ -24,5 +24,10 @@ public class Example13 {
 
         // MichelinTyres is annotated with @Primary
         // SonySpeakers constructor injection is annotated with @Qualifier
+
+        // line 21 to 23 is identical to the following lines below
+        var person = context.getBean(Person.class);
+        person.getVehicle().getVehicleServices().moveVehicle();
+        person.getVehicle().getVehicleServices().playMusic();
     }
 }
