@@ -7,19 +7,10 @@ import org.springframework.stereotype.Component;
 public class Person {
 
     private final Vehicle vehicle;
-    private String name = "Lucy";
 
     @Autowired
     public Person(Vehicle vehicle) {
         this.vehicle = vehicle;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Vehicle getVehicle() {
