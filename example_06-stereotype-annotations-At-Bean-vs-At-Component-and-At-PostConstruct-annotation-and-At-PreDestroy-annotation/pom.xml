@@ -7,7 +7,7 @@
 
     <groupId>com.eazybytes</groupId>
     <artifactId>
-        example6-stereotype-annotations-At-Bean-vs-At-Component-and-At-PostConstruct-annotation-and-At-PreDestroy-annotation
+        example_06-stereotype-annotations-At-Bean-vs-At-Component-and-At-PostConstruct-annotation-and-At-PreDestroy-annotation
     </artifactId>
     <version>1.0-SNAPSHOT</version>
 

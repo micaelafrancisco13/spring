@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.eazybytes</groupId>
-    <artifactId>example8-beans-creation-using-XML-configurations</artifactId>
+    <artifactId>example_01-bean-creation-using-At-Bean</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

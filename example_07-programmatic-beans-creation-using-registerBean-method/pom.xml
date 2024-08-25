@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.eazybytes</groupId>
-    <artifactId>example_12</artifactId>
+    <artifactId>example_07-programmatic-beans-creation-using-registerBean-method</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
