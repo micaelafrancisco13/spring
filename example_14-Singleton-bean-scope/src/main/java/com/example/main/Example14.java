@@ -23,5 +23,7 @@ public class Example14 {
 //        To put it another way, when you define a bean definition and it is scoped as a singleton, the Spring IoC container
 //        creates exactly one instance of the object defined by that bean definition. This single instance is stored in a
 //        cache of such singleton beans, and all subsequent requests and references for that named bean return the cached object.
+
+        // Singleton-scoped beans are more suitable for immutable objects
     }
 }

@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.eazybytes</groupId>
-    <artifactId>example_16</artifactId>
+    <artifactId>example_16-Prototype-bean-scope</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
