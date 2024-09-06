@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+<html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -60,7 +60,8 @@
                         <div class="modal-body">
                             <div class="input-grids">
                                 <label class="control-label" for="courseName">Course Name</label>
-                                <input class="form-control" id="courseName" name="courseName" placeholder="Enter Course Name"
+                                <input class="form-control" id="courseName" name="courseName"
+                                       placeholder="Enter Course Name"
                                        required th:field="*{name}" type="text">
                                 <label class="control-label" for="fees">Fees</label>
                                 <input class="form-control" id="fees" name="fees" placeholder="Enter fees" required

@@ -2,7 +2,6 @@ package com.example.services;
 
 import com.example.interfaces.Speakers;
 import com.example.interfaces.Tyres;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 

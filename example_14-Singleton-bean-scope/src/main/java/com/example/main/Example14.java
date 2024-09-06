@@ -4,8 +4,6 @@ import com.example.config.ProjectConfig;
 import com.example.services.VehicleServices;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.util.HashMap;
-
 public class Example14 {
 
     public static void main(String[] args) {

@@ -4,6 +4,7 @@ public class Person {
 
     private String name;
     private Vehicle vehicle;
+
     public Person() {
         System.out.println("Person bean created by Spring");
     }
