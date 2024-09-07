@@ -14,6 +14,7 @@ public class Application {
          * When Spring creates a proxy for UserService, the proxy will handle method calls and apply the necessary aspects:
          * */
         var userService = context.getBean(UserService.class);
+        System.out.println("Proxy: " + userService.getClass());
 
         // The proxy intercepts these calls (line 19 and 20)
         userService.createUser();

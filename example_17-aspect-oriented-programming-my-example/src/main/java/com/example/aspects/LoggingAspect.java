@@ -1,9 +1,10 @@
 package com.example.aspects;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Aspect
@@ -60,20 +61,48 @@ public class LoggingAspect {
 
     @Before("execution(* com.example.services.*.*(..))")
     public void logBefore(JoinPoint joinPoint) {
-        System.out.println("A method in the service layer is about to be executed.");
+        System.out.println("logBefore()");
+        System.out.println("A method " + joinPoint.getSignature().getName() + " in the service layer is about to be executed.");
     }
 
-    @Pointcut("execution(* com.example.services.UserService.get*(..))")
-    public void getterMethods() {}
+    @Around("execution(* com.example.services.UserService.*(..))")
+    public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
+        System.out.println("logAround()");
+        System.out.println("A method " + joinPoint.getSignature().getName() + " in the service layer is about to be executed.");
 
-    @Before("getterMethods()")
-    public void logBeforeGetterMethods() {
-        System.out.println("A getter method is being called.");
+        /*
+         * The joinPoint.proceed() method is called, which executes the original method (e.g., createUser() or getUser() in
+         * UserService).
+         *
+         * Example Scenario:
+         * Target Method: Suppose getUser() in UserService returns a User object.
+         * Advice: The logAround advice will capture that User object in the "result" variable.
+         * */
+        var result = joinPoint.proceed();
+        if (result != null) System.out.println("Result: " + result);
+
+        System.out.println("A method " + joinPoint.getSignature().getName() + " in the service layer is already executed.");
+
+        /*
+         * The Object result ensures that the return value of the original method (e.g., getUser) is passed back to it without
+         * alteration, unless you explicitly change it within the advice.
+         * */
+        return result;
     }
 
-    // Line 44 to 50 is identical to the advice below:
+
+//    @Pointcut("execution(* com.example.services.UserService.get*(..))")
+//    public void getterMethods() {
+//    }
+//
+//    @Before("getterMethods()")
+//    public void logBeforeGetterMethods(JoinPoint joinPoint) {
+//        System.out.println("A getter method " + joinPoint.getSignature().getName() + " is being called.");
+//    }
+
+//    Line 44 to 50 is identical to the advice below:
 //    @Before("execution(* com.example.services.UserService.get*(..))")
-//    public void logBeforeGetterMethods() {
-//        System.out.println("A getter method is being called.");
+//    public void logBeforeGetterMethods(JoinPoint joinPoint) {
+//        System.out.println("A getter method " + joinPoint.getSignature().getName() + " is being called.");
 //    }
 }
