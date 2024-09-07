@@ -138,7 +138,7 @@ public class LoggingAspect {
 //        System.out.println("A getter method " + joinPoint.getSignature().getName() + " is being called.");
 //    }
 
-//    Line 44 to 50 is identical to the advice below:
+//    Line 132 to 139 is identical to the advice below:
 //    @Before("execution(* com.example.services.UserService.get*(..))")
 //    public void logBeforeGetterMethods(JoinPoint joinPoint) {
 //        System.out.println("A getter method " + joinPoint.getSignature().getName() + " is being called.");
