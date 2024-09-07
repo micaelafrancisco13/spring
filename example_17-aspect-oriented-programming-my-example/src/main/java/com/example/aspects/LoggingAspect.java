@@ -5,10 +5,12 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
+@Order(1)
 public class LoggingAspect {
     /*
      * 1. ASPECT
@@ -35,6 +37,19 @@ public class LoggingAspect {
      * A predicate that matches join points. Advice is associated with a pointcut expression and runs at any join point matched by
      * the pointcut (for example, the execution of a method with a certain name).
      * The expression "execution(* com.example.services.*.*(..))" is a pointcut expression.
+     * The modifiers-pattern? (Optional): This specifies method modifiers like public, protected, etc. You can omit this if you want
+     * to match any modifier.
+     * The ret-type-pattern: This specifies the return type of the method. You can use specific types (e.g., String, int) or
+     * wildcards (e.g., * for any return type).
+     * The declaring-type-pattern? (Optional): This specifies the class or interface that declares the method. You can use the fully
+     * qualified class name or package patterns (e.g., com.example.*).
+     * The method-name-pattern: This specifies the name of the method. You can use specific method names or wildcards (e.g., * for
+     * any method name).
+     * The param-pattern: This specifies the parameters of the method. You can list specific types or use wildcards (e.g., .. for
+     * any number of parameters).
+     * The throws-pattern? (Optional): This specifies the exceptions thrown by the method. You can omit this if you don't want to
+     * match based on thrown exceptions.
+     * "execution(modifiers-pattern? ret-type-pattern declaring-type-pattern? method-name-pattern(param-pattern) throws-pattern?)"
      *
      * 5. INTRODUCTION
      *
@@ -59,16 +74,25 @@ public class LoggingAspect {
      *
      * */
 
-    @Before("execution(* com.example.services.*.*(..))")
-    public void logBefore(JoinPoint joinPoint) {
+    /*
+     * This pointcut expression "execution(* com.example.services.*.*(..)) && args(status,..)" matches the execution of any method
+     * within the com.example.services package, where the first argument is named status, and there can be any number of additional
+     * arguments.
+     *
+     * */
+    @Before("execution(* com.example.services.*.*(..)) && args(status,..)")
+    public void logBefore(JoinPoint joinPoint, String status) {
         System.out.println("logBefore()");
         System.out.println("A method " + joinPoint.getSignature().getName() + " in the service layer is about to be executed.");
+        System.out.println("User status passed as a parameter: " + status);
     }
 
-    @Around("execution(* com.example.services.UserService.*(..))")
-    public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
+    @Around("execution(* com.example.services.UserService.*(..)) && args(status,..)")
+    public Object logAround(ProceedingJoinPoint joinPoint, String status) throws Throwable {
         System.out.println("logAround()");
         System.out.println("A method " + joinPoint.getSignature().getName() + " in the service layer is about to be executed.");
+        System.out.println("User status passed as a parameter: " + status);
+
 
         /*
          * The joinPoint.proceed() method is called, which executes the original method (e.g., createUser() or getUser() in

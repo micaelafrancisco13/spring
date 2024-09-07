@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private final String name = "Ela Francisco";
 
-    public void createUser() {
+    public void createUser(String status) {
         System.out.println("Creating user...");
     }
 

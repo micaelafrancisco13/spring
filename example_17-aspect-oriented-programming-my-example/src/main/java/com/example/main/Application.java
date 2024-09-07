@@ -17,7 +17,7 @@ public class Application {
         System.out.println("Proxy: " + userService.getClass());
 
         // The proxy intercepts these calls (line 19 and 20)
-        userService.createUser();
+        userService.createUser("Active");
         System.out.println("User: " + userService.getUser());
 
         /*
