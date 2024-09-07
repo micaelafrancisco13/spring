@@ -18,7 +18,11 @@ public class Application {
 
         // The proxy intercepts these calls (line 19 and 20)
         userService.createUser("Active");
-        System.out.println("User: " + userService.getUser());
+        try {
+            System.out.println("User: " + userService.getUserById(13));
+        } catch (Exception exception) {
+            throw new RuntimeException(exception);
+        }
 
         /*
          * The proxy object intercepts the createUser() and applies the aspects before or after calling the actual method.

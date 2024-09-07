@@ -1,10 +1,10 @@
 package com.example.aspects;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Order(1)
 public class LoggingAspect {
+    private static final Log log = LogFactory.getLog(LoggingAspect.class);
     /*
      * 1. ASPECT
      *
@@ -114,6 +115,19 @@ public class LoggingAspect {
         return result;
     }
 
+    // This advice is triggered when any join point that matches the pointcut throws an exception.
+    @AfterThrowing(pointcut = "execution(* com.example.services.*.*(..))", throwing = "exception")
+    public void logAfterThrowing(Exception exception) {
+        System.out.println("logAfterThrowing()");
+        System.out.println("Exception thrown: " + exception.getMessage());
+    }
+
+    // This advice is triggered when any join point that matches the pointcut successfully returns void or data type.
+    @AfterReturning(pointcut = "execution(* com.example.services.*.*(..))", returning = "result")
+    public void logAfterReturning(Object result) {
+        System.out.println("logAfterReturning()");
+        System.out.println("Method returned: " + result);
+    }
 
 //    @Pointcut("execution(* com.example.services.UserService.get*(..))")
 //    public void getterMethods() {
