@@ -25,12 +25,22 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+
+        <!-- The spring-boot-devtools dependency maintains 2 class loaders. Without it, there is only 1 class loader. The 2 class
+        loaders include the class loader that loads the classes from the dependencies, and the other class loader has all
+        the classes defined by the developer. When changes are made, this devtool will only reload the latter class loader.
+        For live reload to happen, there is an embedded live reload server (with the help of a browser extension) that can be used
+        to trigger a browser refresh.
+        Link: https://chrome.google.com/webstore/detail/ciehpookapcdlakedibajeccomagbfab
+              -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
+            <!-- only available at runtime, that's why its optional is set to true -->
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

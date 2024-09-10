@@ -26,7 +26,7 @@ public class HomeController {
          * <p>Welcome, <span th:text="${username}"></span></p>
          *
          * */
-        model.addAttribute("username", "John Doe");
+        model.addAttribute("username", "John Smith");
         return "home.html";
     }
 
