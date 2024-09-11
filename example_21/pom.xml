@@ -31,10 +31,16 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+
+        <!-- The Lombok-generated methods exist only at compile-time, meaning they are embedded in the resulting .class files. When you
+        inspect the compiled bytecode, the methods created by Lombok will appear as if you had written them yourself.
+        The Java Virtual Machine (JVM) executes the compiled bytecode with these additional methods, making the Lombok-generated code
+        indistinguishable from manually written code at runtime.       -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
