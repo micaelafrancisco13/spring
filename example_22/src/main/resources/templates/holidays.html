@@ -44,6 +44,9 @@ Author URL: http://w3layouts.com
             <h3 class="title-style">Awesome Holidays</h3>
         </div>
         <div class="row">
+            <!-- th:if is an attribute used to conditionally include or exclude an HTML element based on a boolean expression. If the
+            expression evaluates to true, the element is rendered in the resulting HTML output; if the expression evaluates to false,
+            the element is not rendered.           -->
             <div class="col-lg-6" th:if="${festival} == true">
                 <h5 class="sub-title-timeline"><i class="fas fa-snowman"></i> Festival Holidays</h5>
                 <div class="timeline">

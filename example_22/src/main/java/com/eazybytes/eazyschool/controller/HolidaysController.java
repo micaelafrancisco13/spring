@@ -15,9 +15,18 @@ import java.util.stream.Collectors;
 @Controller
 public class HolidaysController {
 
+    // @RequestParam is an annotation used to bind HTTP request parameters to method parameters in controller classes.
+    // If the request parameter is optional and might not always be provided, you can specify a default value using the
+    // defaultValue attribute.
+    // You can make the parameter optional by setting required = false. If the parameter is missing, and you don't
+    // provide a default value, the method will receive null.
+
+    // http://localhost:8080/holidays?festival=festival1&federal=federal1 where "festival" and "federal" attributes are
+    // optional.
     @GetMapping("/holidays")
     public String displayHolidays(@RequestParam(required = false) boolean festival,
                                   @RequestParam(required = false) boolean federal, Model model) {
+        // The aforementioned query parameters are added to the Model so that it can be passed back to the UI for filtering.
         model.addAttribute("festival", festival);
         model.addAttribute("federal", federal);
         List<Holiday> holidays = Arrays.asList(
