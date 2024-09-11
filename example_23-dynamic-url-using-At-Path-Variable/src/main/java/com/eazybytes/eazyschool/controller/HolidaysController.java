@@ -15,16 +15,26 @@ import java.util.stream.Collectors;
 @Controller
 public class HolidaysController {
 
+    /*
+     * @PathVariable is used when you want to capture a dynamic value from the URL path itself, rather than from query parameters
+     * (which are handled by @RequestParam). This is useful in RESTful APIs where specific resources are accessed via unique
+     * identifiers.
+     *
+     * http://localhost:8080/holidays/all
+     * http://localhost:8080/holidays/federal
+     * http://localhost:8080/holidays/festival
+     * */
     @GetMapping("/holidays/{display}")
     public String displayHolidays(@PathVariable String display, Model model) {
-        if (null != display && display.equals("all")) {
-            model.addAttribute("festival", true);
-            model.addAttribute("federal", true);
-        } else if (null != display && display.equals("federal")) {
-            model.addAttribute("federal", true);
-        } else if (null != display && display.equals("festival")) {
-            model.addAttribute("festival", true);
+        switch (display) {
+            case "festival" -> model.addAttribute("festival", true);
+            case "federal" -> model.addAttribute("federal", true);
+            default -> {
+                model.addAttribute("festival", true);
+                model.addAttribute("federal", true);
+            }
         }
+
         List<Holiday> holidays = Arrays.asList(
                 new Holiday(" Jan 1 ", "New Year's Day", Holiday.Type.FESTIVAL),
                 new Holiday(" Oct 31 ", "Halloween", Holiday.Type.FESTIVAL),
