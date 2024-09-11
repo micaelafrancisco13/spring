@@ -45,6 +45,11 @@ Author URL: http://w3layouts.com
         </div>
         <div class="row contact-block">
             <div class="col-md-7 contact-right">
+                <!-- th:action="@{/saveMsg}":
+                th:action: This Thymeleaf attribute dynamically sets the action attribute of the form. The action attribute specifies
+                the URL to which the form data will be submitted when the form is submitted.
+                @{/saveMsg}: The @{...} syntax is used to generate URLs dynamically, considering the context path of the application.
+                In this case, the form will submit its data to the /saveMsg endpoint. -->
                 <form class="signin-form" method="post" th:action="@{/saveMsg}">
                     <div class="input-grids">
                         <div class="row">

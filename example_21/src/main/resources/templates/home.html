@@ -17,6 +17,14 @@ Author URL: http://w3layouts.com
 </head>
 
 <body>
+
+<!-- th:replace: This attribute tells Thymeleaf to replace the entire <div> with the content from another template fragment.-->
+<!-- ~{header :: header}: This syntax refers to a fragment located in the header.html template file. The part before :: (header) is
+the name of the file (without the .html extension), and the part after :: (header) is the name of the fragment within that file.
+
+So, Thymeleaf looks for the file header.html (in your template directory), then searches for a fragment inside that file with the name
+header, and replaces the <div> with that fragment's content.-->
+
 <!-- header -->
 <div th:replace="~{header :: header}">...</div>
 <!-- //header -->
@@ -31,6 +39,8 @@ Author URL: http://w3layouts.com
                     </h3>
                     <p class="banner-sub">Active Learning, Expert Teachers & Safe Environment</p>
                     <div class="d-flex align-items-center buttons-banner">
+                        <!-- The th:href="@{/contact}" attribute in Thymeleaf is used to dynamically generate a hyperlink (<a> tag) to
+                        the /contact URL within a web application. -->
                         <a class="btn btn-style mt-lg-5 mt-4" th:href="@{/contact}">Admission Now</a>
                     </div>
                 </div>
