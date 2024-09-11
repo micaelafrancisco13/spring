@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.eazybytes</groupId>
-    <artifactId>example_22</artifactId>
+    <artifactId>example_22-query-parameters-using-At-RequestParam</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>example_22</name>
+    <name>example_22-query-parameters-using-At-RequestParam</name>
     <description>Eazy School Web Application</description>
     <properties>
         <java.version>21</java.version>
