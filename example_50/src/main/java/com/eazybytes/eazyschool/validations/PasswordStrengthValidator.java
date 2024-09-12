@@ -1,7 +1,6 @@
 package com.eazybytes.eazyschool.validations;
 
 import com.eazybytes.eazyschool.annotation.PasswordValidator;
-
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
