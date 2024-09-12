@@ -15,10 +15,30 @@ This makes our code short and clean.
 public class Contact {
 
     /*
-    * @NotNull: Checks if a given field is not null but allows empty values & zero elements inside collections.
-      @NotEmpty: Checks if a given field is not null and its size/length is greater than zero.
-      @NotBlank: Checks if a given field is not null and trimmed length is greater than zero.
-    * */
+     * @NotNull:
+     * Ensures that a field is not null.
+     * It doesn't check if the value is empty or blank, just that it's not null.
+     * Example use case: If you have a field that must always contain a value but it can be an empty string, then you can use
+     * @NotNull.
+     * @NotNull
+     * private String name; // Valid: "", "John", Invalid: null
+     *
+     * @NotEmpty:
+     * Ensures that a collection, array, or string is not null and has a length greater than 0.
+     * It applies to fields like lists, arrays, and strings.
+     * Example use case: When you want to make sure the field is not null and contains some elements, but it can still have
+     * whitespace characters.
+     * @NotEmpty
+     * private String name; // Valid: "John", Invalid: "", null
+     *
+     * @NotBlank:
+     * Specifically for strings, it ensures that a string is not null, is not empty, and contains at least one non-whitespace character.
+     * Example use case: When you want to ensure a string contains actual content, not just spaces.
+     * @NotBlank
+     * private String name; // Valid: "John", Invalid: "", "  ", null
+     *
+     * */
+
     @NotBlank(message = "Name must not be blank")
     @Size(min = 3, message = "Name must be at least 3 characters long")
     private String name;
